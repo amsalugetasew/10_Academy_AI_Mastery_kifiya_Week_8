@@ -33,10 +33,20 @@ class DataPreprocessor:
         return self.df1,self.df2
         
     def merge_datasets(self):
-        self.df1 = self.df1.merge(self.df2, how="left", 
-                                  left_on="ip_address", 
-                                  right_on="lower_bound_ip_address")
-        self.df1.drop(columns=["lower_bound_ip_address", "upper_bound_ip_address"], inplace=True)
+        # Ensure IP data is sorted for merge_asof()
+        self.df2 = self.df2.sort_values("lower_bound_ip_address")
+
+        # Perform the merge using `merge_asof()`
+        self.df1 = self.df1.sort_values("ip_address")  # Ensure df1 is sorted before merging
+        self.df1 = pd.merge_asof(self.df1, self.df2, left_on="ip_address", right_on="lower_bound_ip_address")
+
+        # Drop unnecessary columns
+        self.df1 = self.df1.drop(columns=["lower_bound_ip_address", "upper_bound_ip_address"])
+
+        # self.df1 = self.df1.merge(self.df2, how="left", 
+        #                           left_on="ip_address", 
+        #                           right_on="lower_bound_ip_address")
+        # self.df1.drop(columns=["lower_bound_ip_address", "upper_bound_ip_address"], inplace=True)
         print("Datasets merged.")
         return self.df1
     
@@ -54,8 +64,10 @@ class DataPreprocessor:
         return df
     
     def encode_categorical_features(self, df1):
-        df1 = pd.Categorical(df1, columns=["source", "browser", "sex"], drop_first=True).codes
-        # df1['browser_encoded'] = pd.Categorical(eng_df['browser']).codes
+        categorical_columns = ["source", "browser", "sex","country"]  # Define categorical columns
+    
+        for col in categorical_columns:
+            df1[col] = pd.Categorical(df1[col]).codes  # Encode each column
         print("Categorical features encoded.")
         return df1
     
