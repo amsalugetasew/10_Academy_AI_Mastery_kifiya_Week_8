@@ -1,5 +1,4 @@
 import pandas as pd
-# Reading data
 class CSVReader:
     def __init__(self, file_path):
         """
