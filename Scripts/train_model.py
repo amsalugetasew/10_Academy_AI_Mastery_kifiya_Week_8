@@ -8,7 +8,7 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import accuracy_score, classification_report
 import mlflow
 import mlflow.sklearn
-
+# Model Training 
 class ModelTrainer:
     def __init__(self, df_credit, df_fraud):
         self.df_credit = df_credit
