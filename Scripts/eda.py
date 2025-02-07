@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler, StandardScaler
-
+# EDA, preprocessing, and Feature engineering
 class DataPreprocessor:
     def __init__(self, df, df1, df2):
         self.df = df
