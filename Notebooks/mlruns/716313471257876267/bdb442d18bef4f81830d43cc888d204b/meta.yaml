@@ -1,5 +1,5 @@
 artifact_uri: file:///c:/Users/Admin/10_Academy_AI_Mastery_kifiya_Week_8/Notebooks/mlruns/716313471257876267/bdb442d18bef4f81830d43cc888d204b/artifacts
-end_time: null
+end_time: 1739169889402
 entry_point_name: ''
 experiment_id: '716313471257876267'
 lifecycle_stage: active
@@ -10,6 +10,6 @@ source_name: ''
 source_type: 4
 source_version: ''
 start_time: 1739169338025
-status: 1
+status: 3
 tags: []
 user_id: Admin

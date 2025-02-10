@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/Admin/10_Academy_AI_Mastery_kifiya_Week_8/Notebooks/mlruns/716313471257876267/2eedb838315e4bc0a15b56fee96d396d/artifacts
+end_time: 1739171600034
+entry_point_name: ''
+experiment_id: '716313471257876267'
+lifecycle_stage: active
+run_id: 2eedb838315e4bc0a15b56fee96d396d
+run_name: Credit Card - CNN
+run_uuid: 2eedb838315e4bc0a15b56fee96d396d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1739171554081
+status: 4
+tags: []
+user_id: Admin

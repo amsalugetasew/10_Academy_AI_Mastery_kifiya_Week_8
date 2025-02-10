@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/Admin/10_Academy_AI_Mastery_kifiya_Week_8/Notebooks/mlruns/716313471257876267/0200907e5b0747beacecf0d12733b298/artifacts
+end_time: 1739175265292
+entry_point_name: ''
+experiment_id: '716313471257876267'
+lifecycle_stage: active
+run_id: 0200907e5b0747beacecf0d12733b298
+run_name: Credit Card - MLP
+run_uuid: 0200907e5b0747beacecf0d12733b298
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1739175211580
+status: 3
+tags: []
+user_id: Admin

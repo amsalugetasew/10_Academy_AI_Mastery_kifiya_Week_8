@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/Admin/10_Academy_AI_Mastery_kifiya_Week_8/Notebooks/mlruns/716313471257876267/8c7d92efea484258a074953529d2e0dd/artifacts
+end_time: 1739171860123
+entry_point_name: ''
+experiment_id: '716313471257876267'
+lifecycle_stage: active
+run_id: 8c7d92efea484258a074953529d2e0dd
+run_name: Credit Card - Logistic Regression
+run_uuid: 8c7d92efea484258a074953529d2e0dd
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1739171852418
+status: 3
+tags: []
+user_id: Admin

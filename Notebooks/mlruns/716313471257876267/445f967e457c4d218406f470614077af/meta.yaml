@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/Admin/10_Academy_AI_Mastery_kifiya_Week_8/Notebooks/mlruns/716313471257876267/445f967e457c4d218406f470614077af/artifacts
+end_time: 1739174602953
+entry_point_name: ''
+experiment_id: '716313471257876267'
+lifecycle_stage: active
+run_id: 445f967e457c4d218406f470614077af
+run_name: Credit Card - Random Forest
+run_uuid: 445f967e457c4d218406f470614077af
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1739174254339
+status: 3
+tags: []
+user_id: Admin
