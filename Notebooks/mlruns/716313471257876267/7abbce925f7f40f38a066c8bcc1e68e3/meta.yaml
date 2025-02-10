@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/Admin/10_Academy_AI_Mastery_kifiya_Week_8/Notebooks/mlruns/716313471257876267/7abbce925f7f40f38a066c8bcc1e68e3/artifacts
+end_time: 1739167539045
+entry_point_name: ''
+experiment_id: '716313471257876267'
+lifecycle_stage: active
+run_id: 7abbce925f7f40f38a066c8bcc1e68e3
+run_name: Credit Card - Decision Tree
+run_uuid: 7abbce925f7f40f38a066c8bcc1e68e3
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1739167496345
+status: 3
+tags: []
+user_id: Admin

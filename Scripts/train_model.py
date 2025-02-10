@@ -41,12 +41,13 @@ class ModelTrainer:
         
         mlflow.set_experiment("fraud_detection_experiment")
         
-        for dataset_name, df, target in [("Credit Card", self.df_credit, "Class"), ("Fraud Data", self.df_fraud, "class")]:
+        for dataset_name, df, target in [("Credit Card", self.df_credit, "Class"), ("Fraud Data", self.df_fraud, "Class")]:
             print(f"\nTraining models for {dataset_name} dataset...")
             X_train, X_test, y_train, y_test = self.prepare_data(df, target)
             
             for model_name, model in models.items():
                 with mlflow.start_run(run_name=f"{dataset_name} - {model_name}"):
                     self.train_and_evaluate(X_train, X_test, y_train, y_test, model, model_name)
+
 
 

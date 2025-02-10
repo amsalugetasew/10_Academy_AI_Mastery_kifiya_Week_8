@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/Admin/10_Academy_AI_Mastery_kifiya_Week_8/Notebooks/mlruns/716313471257876267/7f836daf7463496a8599da207a00ecab/artifacts
+end_time: 1739168491543
+entry_point_name: ''
+experiment_id: '716313471257876267'
+lifecycle_stage: active
+run_id: 7f836daf7463496a8599da207a00ecab
+run_name: Fraud Data - Logistic Regression
+run_uuid: 7f836daf7463496a8599da207a00ecab
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1739168491483
+status: 4
+tags: []
+user_id: Admin
