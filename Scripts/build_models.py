@@ -18,6 +18,16 @@ class ModelTrainer1:
 
     def prepare_data(self, df, target_column):
         """Prepares data by splitting features and target, scaling features, and reshaping for deep learning"""
+        if "signup_time" in df.columns and "purchase_time" in df.columns:
+            # Convert datetime columns to Unix timestamps (numeric format)
+            df["signup_time"] = pd.to_datetime(df["signup_time"]).astype('int64') // 10**9
+            df["purchase_time"] = pd.to_datetime(df["purchase_time"]).astype('int64') // 10**9
+
+            # Feature Engineering: Time difference between signup and purchase
+            df["signup_to_purchase_seconds"] = df["purchase_time"] - df["signup_time"]
+
+            # Drop original datetime columns if not needed
+            df = df.drop(columns=["signup_time", "purchase_time"])
         X = df.drop(columns=[target_column]).values
         y = df[target_column].values
 
@@ -84,12 +94,13 @@ class ModelTrainer1:
         # Save deep learning model for deployment
         model.save(f"{model_name}.h5")
         print(f"Model {model_name} saved as {model_name}.h5")
-
+   
+   
     def run_experiments(self):
         """Run all experiments for classical ML and Deep Learning models"""
         mlflow.set_experiment("fraud_detection_experiment")
 
-        for dataset_name, df, target in [("Credit Card", self.df_credit, "Class"), ("Fraud Data", self.df_fraud, "class")]:
+        for dataset_name, df, target in [("Credit Card", self.df_credit, "Class"),("Fraud Data", self.df_fraud, "class")]:
             print(f"\nTraining models for {dataset_name} dataset...")
 
             # Prepare tabular data for ML models
@@ -127,9 +138,9 @@ class ModelTrainer1:
                     mlflow.sklearn.log_model(model, model_name)
 
                     # Save classical ML models
-                    with open(f"{model_name}.pkl", "wb") as f:
+                    with open(f"{dataset_name}_{model_name}.pkl", "wb") as f:
                         pickle.dump(model, f)
-                    print(f"Model {model_name} saved as {model_name}.pkl")
+                    print(f"Model {dataset_name}_{model_name} saved as {model_name}.pkl")
 
             # Train Deep Learning Models
             deep_models = {
