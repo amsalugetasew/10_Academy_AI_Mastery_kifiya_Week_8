@@ -16,6 +16,44 @@ class ModelTrainer1:
         self.df_fraud = df_fraud
         self.scaler = StandardScaler()  # Standardize features
 
+    def train_test_split1(self):
+        df = self.df_credit  # Select the appropriate dataset
+        df = self.df_fraud  # Alternatively, use df_fraud if that's your dataset
+        target_column = 'class'
+
+        """Prepares data by splitting features and target, scaling features, and reshaping for deep learning"""
+        if "signup_time" in df.columns and "purchase_time" in df.columns:
+            # Convert datetime columns to Unix timestamps (numeric format)
+            df["signup_time"] = pd.to_datetime(df["signup_time"]).astype('int64') // 10**9
+            df["purchase_time"] = pd.to_datetime(df["purchase_time"]).astype('int64') // 10**9
+
+            # Feature Engineering: Time difference between signup and purchase
+            df["signup_to_purchase_seconds"] = df["purchase_time"] - df["signup_time"]
+
+            # Drop original datetime columns if not needed
+            df = df.drop(columns=["signup_time", "purchase_time"])
+
+        # Separate features and target
+        X = df.drop(columns=[target_column])
+        y = df[target_column].values  # Convert y to a NumPy array
+
+        # Ensure `y` is reshaped for TensorFlow models
+        y = y.reshape(-1, 1)  # Now works since y is a NumPy array
+
+        # Scale features using StandardScaler
+        X_scaled = self.scaler.fit_transform(X)
+
+        # Perform train-test split while keeping the DataFrame format
+        a, b, c, d = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
+
+        # Convert numpy arrays back to DataFrame for both X and y
+        a = pd.DataFrame(a, columns=X.columns)
+        b = pd.DataFrame(b, columns=X.columns)
+        c = pd.DataFrame(c, columns=[target_column])
+        d = pd.DataFrame(d, columns=[target_column])
+
+        return a, b, c, d, df.drop(columns=[target_column])
+
     def prepare_data(self, df, target_column):
         """Prepares data by splitting features and target, scaling features, and reshaping for deep learning"""
         if "signup_time" in df.columns and "purchase_time" in df.columns:
@@ -133,9 +171,13 @@ class ModelTrainer1:
                     print(classification_report(y_test, y_pred))
 
                     # Log experiment with MLflow
+                    input_example = X_test[:5]  # A few test samples
+                    
+
                     mlflow.log_param("model_name", model_name)
                     mlflow.log_metric("accuracy", accuracy)
-                    mlflow.sklearn.log_model(model, model_name)
+                    mlflow.sklearn.log_model(model, model_name, input_example=input_example)
+                    # mlflow.sklearn.log_model(model, model_name)
 
                     # Save classical ML models
                     with open(f"{dataset_name}_{model_name}.pkl", "wb") as f:
